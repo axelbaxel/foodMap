@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import EnturService from '@entur/sdk';
 
 import MapRender from './components/MapRender'
-import Search from './components/Search';
-import Api from './Api';
+import Search from './components/Search'
+import List from './components/List'
+import Api from './Api'
 
 import './css/App.css';
 
@@ -64,6 +65,7 @@ class App extends Component {
       <div className="App">
         <Search />
         <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.markers}/>
+        <List places={places}></List>
       </div>
     );
   }

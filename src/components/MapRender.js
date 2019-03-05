@@ -7,7 +7,7 @@ import './../css/MapRender.css'
 
 const MapRender = props => {
     return (
-        <div className="mapContainer">
+        <div className="map">
         <Map center={props.mapCoords} zoom={props.zoom} > 
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

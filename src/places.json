@@ -1,7 +1,7 @@
  [
         {
             "id": 1,
-            "name": "place 1",
+            "name": "Place 1",
             "img": "https://imghost.url/placeholder.png",
             "url": "https://placeurl.com",
             "description": "Placeholder text",
@@ -13,7 +13,7 @@
         },
         {
             "id": 2,
-            "name": "place 2",
+            "name": "Place 2",
             "img": "https://imghost.url/placeholder.png",
             "url": "https://placeurl.com",
             "description": "Placeholder text",
@@ -26,7 +26,7 @@
         },
         {
             "id": 3,
-            "name": "place 3",
+            "name": "Place 3",
             "img": "https://imghost.url/placeholder.png",
             "url": "https://placeurl.com",
             "description": "Placeholder text",
