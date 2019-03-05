@@ -4,3 +4,4 @@ Idea is to show restaurants/fast-food places and their menus. Extra feature that
 
 Shows places on a map and in a list. Includes a searchbar that filters out results.
 
+Plan is to deliver information about the places trough an API.
