@@ -31,10 +31,13 @@ class App extends Component {
       searchValue: "",
       places: [places[0], places[1], places[2]]
     }
-    this.getCloseStops();
+    
     
   }
   
+  componentDidMount = () => {
+    this.getCloseStops();
+  }
 
   getCloseStops = (/*lat, long*/) => {
     /*let coords = {
@@ -42,10 +45,12 @@ class App extends Component {
       longitude: long
     }*/
     
-    let closeStops = service.getStopPlacesByPosition(this.state.selectedCoords);
-    this.setState({
-      closeStops: closeStops,
+    return service.getStopPlacesByPosition(this.state.selectedCoords).then(closeStops => {
+      this.setState({
+        closeStops: closeStops,
+      })
     })
+    
   }
 
   searchEvent = (event) => {
