@@ -7,8 +7,8 @@
             "description": "Placeholder text",
             "location": {
                 "address": "Gata 1, 0001 Oslo",
-                "lat": 0,
-                "lng": 0
+                "lat": 59.9098,
+                "lng": 10.7636
             }
         },
         {
@@ -19,8 +19,8 @@
             "description": "Placeholder text",
             "location": {
                 "address": "Gata 2, 0002 Oslo",
-                "lat": 1,
-                "lng": 1
+                "lat": 59.9300,
+                "lng": 10.7636
             }
 
         },
@@ -32,8 +32,8 @@
             "description": "Placeholder text",
             "location": {
                 "address": "Gata 3, 0003 Oslo",
-                "lat": 2,
-                "lng": 2
+                "lat": 59.9098,
+                "lng": 10.8036
             }
 
         }

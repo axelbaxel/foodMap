@@ -23,13 +23,19 @@ class App extends Component {
         lng: 10.7636,
       },
       selectedCoords: {
-        latitude: 59.9098,
-        longitude: 10.7636,
+        lat: 59.9098,
+        lng: 10.7636,
       },
       markers: [[59.9098, 10.7636]],
+      /*markers: [
+        {
+          lat: 59.9098,
+          lng: 10.7636,
+        }
+      ],*/
       zoom: 13,
       searchValue: "",
-      places: [places[0], places[1], places[2]]
+      places: places,
     }
     
     
@@ -61,15 +67,12 @@ class App extends Component {
 
   }
 
-  populateMarkers = () => {
-
-  }
 
   render() {
     return (
       <div className="App">
         <Search />
-        <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.markers}/>
+        <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.places}/>
         <List places={places}></List>
       </div>
     );
