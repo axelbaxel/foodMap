@@ -3,7 +3,7 @@ import React from 'react';
 const Search = props => {
     return (
         <div className='search'>
-        <input type='text'></input>
+        <input type='text' onChange={props.onChange}></input>
         </div>
     )
 }

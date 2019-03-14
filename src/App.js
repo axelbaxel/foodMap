@@ -60,7 +60,10 @@ class App extends Component {
   }
 
   searchEvent = (event) => {
-
+    //console.log("Change happened!", event)
+    this.setState({
+      searchValue: event.target.value,
+    })
   }
 
   populateList = (searchValue) => {
@@ -71,7 +74,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Search />
+        <Search onChange={this.searchEvent}/>
         <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.places}/>
         <List places={places}></List>
       </div>
