@@ -13,11 +13,18 @@ const MapRender = props => {
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {props.markers.map((location, id) => <Marker key={`marker-${id}`} position={[location.location.lat, location.location.lng]} >
-              <Popup><div>Dette er {location.name}</div>
-              {location.description}
-              </Popup>
-            </Marker>
+          {props.markers.map((location, id) => {
+            if (location.name != null) {
+              return ( 
+                <Marker key={`marker-${id}`} position={[location.location.lat, location.location.lng]} >
+                  <Popup><div>Dette er {location.name}</div>
+                  {location.description}
+                  </Popup>
+                </Marker>
+              )
+            }
+          
+          }
             )}
           
         </Map></div>

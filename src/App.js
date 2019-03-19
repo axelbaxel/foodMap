@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import EnturService from '@entur/sdk';
+import React, { Component } from 'react'
+import EnturService from '@entur/sdk'
+import _ from 'lodash'
 
 import MapRender from './components/MapRender'
 import Search from './components/Search'
 import List from './components/List'
 import Api from './Api'
 
-import './css/App.css';
+import './css/App.css'
 
 import places from './places.json'
 
@@ -35,14 +36,14 @@ class App extends Component {
       ],*/
       zoom: 13,
       searchValue: "",
-      places: places,
+      filteredPlaces: places,
     }
     
     
   }
   
   componentDidMount = () => {
-    this.getCloseStops();
+    this.getCloseStops()
   }
 
   getCloseStops = (/*lat, long*/) => {
@@ -60,14 +61,27 @@ class App extends Component {
   }
 
   searchEvent = (event) => {
-    //console.log("Change happened!", event)
+    
     this.setState({
       searchValue: event.target.value,
     })
+    
+    this.populateList(event.target.value)
   }
 
-  populateList = (searchValue) => {
-
+  populateList = (search) => {
+    //console.log(search)
+    if (search === "") {
+      this.setState({filteredPlaces: places})
+    } else {
+      let filter = this.state.filteredPlaces.map((place, id) => {
+        return (_.startsWith(_.toLower(place.name), _.toLower(search))) ? place : ""
+       
+      })
+      
+      this.setState({filteredPlaces: filter})
+    }
+    this.forceUpdate()
   }
 
 
@@ -75,10 +89,10 @@ class App extends Component {
     return (
       <div className="App">
         <Search onChange={this.searchEvent}/>
-        <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.places}/>
-        <List places={places}></List>
+        <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.filteredPlaces}/>
+        <List places={this.state.filteredPlaces}></List>
       </div>
-    );
+    )
   }
 }
 
