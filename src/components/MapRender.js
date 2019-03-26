@@ -22,8 +22,9 @@ const MapRender = props => {
                   </Popup>
                 </Marker>
               )
+              
             }
-          
+          return null;
           }
             )}
           

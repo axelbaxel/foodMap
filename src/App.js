@@ -5,13 +5,15 @@ import _ from 'lodash'
 import MapRender from './components/MapRender'
 import Search from './components/Search'
 import List from './components/List'
-import Api from './Api'
+import Place from './components/Place'
+//import Api from './Api'
 
 import './css/App.css'
 
 import places from './places.json'
 
 const service = new EnturService({ clientName: 'Axel-testapp'})
+
 
 class App extends Component {
 
@@ -37,6 +39,7 @@ class App extends Component {
       zoom: 13,
       searchValue: "",
       filteredPlaces: places,
+      placeSelected: false,
     }
     
     
@@ -74,15 +77,32 @@ class App extends Component {
     if (search === "") {
       this.setState({filteredPlaces: places})
     } else {
-      let filter = this.state.filteredPlaces.map((place, id) => {
-        return (_.startsWith(_.toLower(place.name), _.toLower(search))) ? place : ""
+      let filter = this.state.filteredPlaces.filter((place, id) => {
+        return (_.startsWith(_.toLower(place.name), _.toLower(search)))
        
       })
       
       this.setState({filteredPlaces: filter})
     }
+
+
     this.forceUpdate()
   }
+  selectPlace = (event) => {
+    this.setState({
+      placeSelected: true
+    })
+    this.forceUpdate()
+
+  }
+
+  closePlace = (event) => {
+    this.setState({
+      placeSelected: false
+    })
+    this.forceUpdate()
+  }
+
 
 
   render() {
@@ -90,7 +110,8 @@ class App extends Component {
       <div className="App">
         <Search onChange={this.searchEvent}/>
         <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.filteredPlaces}/>
-        <List places={this.state.filteredPlaces}></List>
+        <List places={this.state.filteredPlaces} clickHandler={this.selectPlace}></List>
+        <Place visibility={this.state.placeSelected} ></Place>
       </div>
     )
   }
