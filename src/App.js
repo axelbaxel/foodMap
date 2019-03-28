@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SkyLight, { SkyLightStateless } from 'react-skylight'
 import EnturService from '@entur/sdk'
 import _ from 'lodash'
 
@@ -40,6 +41,7 @@ class App extends Component {
       searchValue: "",
       filteredPlaces: places,
       placeSelected: false,
+      selectedPlace: "",
     }
     
     
@@ -89,8 +91,10 @@ class App extends Component {
     this.forceUpdate()
   }
   selectPlace = (event) => {
+    console.log(event.target)
     this.setState({
-      placeSelected: true
+      placeSelected: true,
+      selectedPlace: this.state.filteredPlaces[event.target.id]
     })
     this.forceUpdate()
 
@@ -111,7 +115,8 @@ class App extends Component {
         <Search onChange={this.searchEvent}/>
         <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.filteredPlaces}/>
         <List places={this.state.filteredPlaces} clickHandler={this.selectPlace}></List>
-        <Place visibility={this.state.placeSelected} ></Place>
+        <SkyLightStateless ref={ref => this.selectedPopup = ref} isVisible={this.state.placeSelected} onCloseClicked={() => {this.closePlace()}} title={this.state.selectedPlace.name}><Place visibility={this.state.placeSelected} data={this.state.selectedPlace} ></Place></SkyLightStateless>
+        {/**/}
       </div>
     )
   }
