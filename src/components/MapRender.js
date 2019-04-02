@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Map, TileLayer, Marker } from 'react-leaflet'
 
 import './../css/MapRender.css'
 
@@ -16,10 +16,8 @@ const MapRender = props => {
           {props.markers.map((location, id) => {
             if (location.name != null) {
               return ( 
-                <Marker key={`marker-${id}`} position={[location.location.lat, location.location.lng]} >
-                  <Popup><div>Dette er {location.name}</div>
-                  {location.description}
-                  </Popup>
+                <Marker key={`marker-${id}`} id={id} position={[location.location.lat, location.location.lng]} onClick={props.clickHandler.bind(this, id)} >
+                  
                 </Marker>
               )
               

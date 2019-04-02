@@ -16,8 +16,10 @@ input {
   height: 30px;
 }
 .map {
-  flex-basis: content;
+  /*flex-basis: content;*/
+  position: inherit;
   background-color: aquamarine;
+  z-index: 30;
 }
 .list {
   width:50%;
@@ -30,7 +32,7 @@ input {
   margin-left: 15%;
   /*margin-top: 10%;*/
   background-color: darkgoldenrod;
-  z-index: -1;
+  z-index: 99;
 }
 .hidden {
   visibility: hidden

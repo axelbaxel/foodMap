@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SkyLight, { SkyLightStateless } from 'react-skylight'
+import { SkyLightStateless } from 'react-skylight'
 import EnturService from '@entur/sdk'
 import _ from 'lodash'
 
@@ -11,7 +11,7 @@ import Place from './components/Place'
 
 import './css/App.css'
 
-import places from './places.json'
+import places from './autopay.json'
 
 const service = new EnturService({ clientName: 'Axel-testapp'})
 
@@ -90,11 +90,11 @@ class App extends Component {
 
     this.forceUpdate()
   }
-  selectPlace = (event) => {
-    console.log(event.target)
+  selectPlace = (id) => {
+    //console.log(id)
     this.setState({
       placeSelected: true,
-      selectedPlace: this.state.filteredPlaces[event.target.id]
+      selectedPlace: this.state.filteredPlaces[id]
     })
     this.forceUpdate()
 
@@ -113,7 +113,7 @@ class App extends Component {
     return (
       <div className="App">
         <Search onChange={this.searchEvent}/>
-        <MapRender mapCoords={this.state.mapCoords} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.filteredPlaces}/>
+        <MapRender mapCoords={this.state.mapCoords} clickHandler={this.selectPlace} zoom={this.state.zoom} selectedCoords={this.state.selectedCoords} markers={this.state.filteredPlaces}/>
         <List places={this.state.filteredPlaces} clickHandler={this.selectPlace}></List>
         <SkyLightStateless ref={ref => this.selectedPopup = ref} isVisible={this.state.placeSelected} onCloseClicked={() => {this.closePlace()}} title={this.state.selectedPlace.name}><Place visibility={this.state.placeSelected} data={this.state.selectedPlace} ></Place></SkyLightStateless>
         {/**/}

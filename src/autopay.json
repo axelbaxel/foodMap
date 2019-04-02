@@ -1,0 +1,40 @@
+[
+    {
+        "id": 1,
+        "name": "Sentrum P-hus",
+        "img": "https://imghost.url/placeholder.png",
+        "url": "https://placeurl.com",
+        "description": "P-hus i nærheten av tinghuset. Innkjøring fra Ring 1 i Hammersborgtunnelen",
+        "location": {
+            "address": "Gata 1, 0001 Oslo",
+            "lat": 59.9160,
+            "lng": 10.7420
+        }
+    },
+    {
+        "id": 2,
+        "name": "Oslo S P-hus",
+        "img": "https://imghost.url/placeholder.png",
+        "url": "https://placeurl.com",
+        "description": "P-hus rett ved Oslo S. Innkjøring fra Dronning Eufemias Gate",
+        "location": {
+            "address": "Gata 2, 0002 Oslo",
+            "lat": 59.9300,
+            "lng": 10.7636
+        }
+
+    },
+    {
+        "id": 3,
+        "name": "Technopolis P-hus",
+        "img": "https://imghost.url/placeholder.png",
+        "url": "https://placeurl.com",
+        "description": "P-hus ved Technopolis på Fornebu.",
+        "location": {
+            "address": "Gata 3, 0003 Fornebu",
+            "lat": 59.9098,
+            "lng": 10.8036
+        }
+
+    }
+]
