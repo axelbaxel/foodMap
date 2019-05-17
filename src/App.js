@@ -7,11 +7,10 @@ import MapRender from './components/MapRender'
 import Search from './components/Search'
 import List from './components/List'
 import Place from './components/Place'
-//import Api from './Api'
+import Api from './Api'
 
 import './css/App.css'
 
-import places from './autopay.json'
 
 const service = new EnturService({ clientName: 'Axel-testapp'})
 
@@ -21,6 +20,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      places: [],
       closeStops: "",
       mapCoords: {
         lat: 59.9098,
@@ -39,7 +39,7 @@ class App extends Component {
       ],*/
       zoom: 13,
       searchValue: "",
-      filteredPlaces: places,
+      filteredPlaces: [],
       placeSelected: false,
       selectedPlace: "",
     }
@@ -49,6 +49,17 @@ class App extends Component {
   
   componentDidMount = () => {
     this.getCloseStops()
+    this.setPlaces()
+    //places = Api.getPlaces()
+  }
+
+  setPlaces = () => {
+    return Api.getPlaces().then(places => {
+      this.setState({
+        places: places,
+        filteredPlaces: places
+      })
+    })
   }
 
   getCloseStops = (/*lat, long*/) => {
@@ -77,7 +88,7 @@ class App extends Component {
   populateList = (search) => {
     //console.log(search)
     if (search === "") {
-      this.setState({filteredPlaces: places})
+      this.setState({filteredPlaces: this.state.places})
     } else {
       let filter = this.state.filteredPlaces.filter((place, id) => {
         return (_.startsWith(_.toLower(place.name), _.toLower(search)))
