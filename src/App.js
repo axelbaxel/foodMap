@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { SkyLightStateless } from 'react-skylight'
-import EnturService from '@entur/sdk'
 import _ from 'lodash'
 
 import MapRender from './components/MapRender'
@@ -12,16 +11,12 @@ import Api from './Api'
 import './css/App.css'
 
 
-const service = new EnturService({ clientName: 'Axel-testapp'})
-
-
 class App extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
       places: [],
-      closeStops: "",
       mapCoords: {
         lat: 59.9098,
         lng: 10.7636,
@@ -48,9 +43,8 @@ class App extends Component {
   }
   
   componentDidMount = () => {
-    this.getCloseStops()
     this.setPlaces()
-    //places = Api.getPlaces()
+    
   }
 
   setPlaces = () => {
@@ -62,19 +56,7 @@ class App extends Component {
     })
   }
 
-  getCloseStops = (/*lat, long*/) => {
-    /*let coords = {
-      latitude: lat,
-      longitude: long
-    }*/
-    
-    return service.getStopPlacesByPosition(this.state.selectedCoords).then(closeStops => {
-      this.setState({
-        closeStops: closeStops,
-      })
-    })
-    
-  }
+
 
   searchEvent = (event) => {
     
@@ -86,7 +68,6 @@ class App extends Component {
   }
 
   populateList = (search) => {
-    //console.log(search)
     if (search === "") {
       this.setState({filteredPlaces: this.state.places})
     } else {
@@ -102,7 +83,6 @@ class App extends Component {
     this.forceUpdate()
   }
   selectPlace = (id) => {
-    //console.log(id)
     this.setState({
       placeSelected: true,
       selectedPlace: this.state.filteredPlaces[id]
