@@ -1,6 +1,6 @@
 # foodMap #
 
-Idea is to show restaurants/fast-food places and their menus, but can be used to show any points of interest. Extra feature that might be implemented is finding nearest public transport stops.
+Original idea was to show restaurants/fast-food places and their menus on a map, but can be used to show any points of interest. Extra feature that might be implemented is finding nearest public transport stops.
 
 
 Shows places on a map and in a list. Includes a searchbar that filters out results.
